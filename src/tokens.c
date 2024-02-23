@@ -28,7 +28,43 @@ char *token_start(char *str){
       return str;
 
     }
-    return NULL;
-
   }
+  return 0;
+}
+
+char *token_terminator(char *token){
+  while(*token){
+    if(non_space_char(*token)){
+      token++;
+    }
+    else{
+      return token;
+    }
+  }
+  return NULL;
+}
+
+int count_tokens(char *str){
+  char *s;
+  char *t;
+  int count = 0;
+  while(*str){
+    s = token_start(str);
+    t = token_terminator(s);
+    if(!(s==0) ){
+      count++;
+    }
+    if(t==NULL) {
+      return count;
+    }
+    str = t;
+    //str = token_terminator(str);
+  }
+}
+
+
+int main(){
+
+  char *str = "h e llo";
+  printf("%d\n", count_tokens(str));
 }
