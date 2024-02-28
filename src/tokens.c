@@ -58,9 +58,27 @@ int count_tokens(char *str){
       return count;
     }
     str = t;
-    //str = token_terminator(str);
   }
 }
+
+char *copy_str(char *inStr, short len){
+  char *outStr = (char *)malloc((len + 1) * sizeof(char));
+
+  for(int i =0; i < len; i++){
+    outStr[i] = inStr[i];
+  }
+
+  outStr[len] = "\0";
+
+  return outStr;
+}
+
+char **tokenize(char* str){
+
+}
+
+}
+
 
 
 int main(){
