@@ -74,7 +74,39 @@ char *copy_str(char *inStr, short len){
 }
 
 char **tokenize(char* str){
+  char **wordTokens = (char **)malloc(100 * sizeof(char*));
 
+  char *token;
+  char *tokenEnd;
+  int strLen;
+
+  for(int i = 0; i < count_tokens(str); i++){
+    token = token_start(str);
+    tokenEnd = token_terminator(tokenStart);
+    strLen = 0;
+    while(token[strLen] != ' '){
+      strLen++;
+    }
+    wordTokens[i] = (char *)malloc((strLen + 1) * sizeof(char));
+    wordTokens[i] = copy_str(token, strLen);
+
+  }
+  wordTokens[count_tokens(str)] = NULL;
+  return wordTokens;
+}
+
+void print_tokens(char **tokens){
+  for(int i = 0; tokens[i] != NULL; i++){
+    printf(tokens[i]);
+
+  }
+}
+
+void free_tokens(char **tokens){
+  for(int i = 0; tokens[i] != NULL; i++){
+    free(tokens[i]);
+  }
+  free(tokens);
 }
 
 }
@@ -85,4 +117,5 @@ int main(){
 
   char *str = "h e llo";
   printf("%d\n", count_tokens(str));
+  printf("%d\n", copy_string(str, 2));
 }
