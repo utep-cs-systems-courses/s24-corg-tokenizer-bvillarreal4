@@ -1,4 +1,5 @@
-#include "tokenizer.h"
+#include "stdio.h"
+#include "stdlib.h"
 #include "history.h"
 
 List* init_history(){
@@ -13,6 +14,7 @@ List* init_history(){
 void add_history(List *list, char *str){
   Item *add_item = (Item*)malloc(sizeof(Item));
   Item *tempRoot = list->root;
+  int id = 0;
 
   if(list->root == NULL){
     list->root = add_item;
