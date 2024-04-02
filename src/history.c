@@ -31,7 +31,48 @@ void add_history(List *list, char *str){
   }
 }
 
+char *get_history(List *list, int id){
+  Item *tempRoot = list->root;
+
+  while(tempRoot != NULL){
+    if(tempRoot->id == id){
+      return tempRoot->str;
+    }
+    else{
+      tempRoot = tempRoot->next;
+    }
+   
+  return "No previous history";
+
+  }
+}
+
+void print_history(List *list){
+  Item *tempRoot = list->root;
+
+  while(tempRoot != NULL){
+    printf(tempRoot->str);
+    tempRoot = tempRoot->next;
+  }
+}
+
+void free_history(List *list){
+  Item *tempRoot = list->root;
+
+  while(tempRoot != NULL){
+    free(list->root);
+    tempRoot = tempRoot->next;
+    list->root = list->root->next;
+  }
+
+  free(list);
+}
+  
+
+
+
+
  
 
 
-}
+
