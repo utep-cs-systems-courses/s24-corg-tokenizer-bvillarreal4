@@ -1,5 +1,6 @@
 #include "tokenizer.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 int space_char(char c){
   if (c == '\t' || c == ' '){
@@ -68,7 +69,7 @@ char *copy_str(char *inStr, short len){
     outStr[i] = inStr[i];
   }
 
-  outStr[len] = "\0";
+  outStr[len] = '\0';
 
   return outStr;
 }
@@ -82,7 +83,7 @@ char **tokenize(char* str){
 
   for(int i = 0; i < count_tokens(str); i++){
     token = token_start(str);
-    tokenEnd = token_terminator(tokenStart);
+    tokenEnd = token_terminator(token);
     strLen = 0;
     while(token[strLen] != ' '){
       strLen++;
@@ -109,13 +110,6 @@ void free_tokens(char **tokens){
   free(tokens);
 }
 
-}
 
 
 
-int main(){
-
-  char *str = "h e llo";
-  printf("%d\n", count_tokens(str));
-  printf("%d\n", copy_string(str, 2));
-}
