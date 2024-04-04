@@ -14,7 +14,7 @@ int main(){
  main:
   printf("Enter your input. If done inputting, enter an empty input \n");
   printf("Enter '!' + the ID of an input you want to view \n");
-  printf("Enter 'h' to view the entire history \n");
+  printf("Enter '*' to view the entire history \n");
 
   do{
     printf("> ");
@@ -40,7 +40,7 @@ int main(){
       break;
 
       //case that prints entire history
-    case 'h':
+    case '*':
       print_history(history);
   
       break;
