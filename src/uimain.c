@@ -34,8 +34,7 @@ int main(){
 
     case '!':
       //converts the character after the ! into a number and assigns it to the id value
-      input[0] = ' ';
-      id = atoi(input);
+      id = input[1] - 0;
       printf(get_history(history,id));
       break;
 
